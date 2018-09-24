@@ -70,7 +70,9 @@ export default Component.extend({
        id = coordinator.setObject(obj, { source: this });
     }
 
-    dataTransfer.setData('Text', id);
+    if(!dataTransfer.getData('Text')) {
+      dataTransfer.setData('Text', id);
+    }
 
     if (obj && typeof obj === 'object') {
       set(obj, 'isDraggingObject', true);
